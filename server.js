@@ -100,5 +100,5 @@ app.post('/api/produce', async (req,res)=>{
 app.get('/api/jobs/:id',(req,res)=>{ const j=jobs.get(req.params.id); if(j) return res.json(j); res.status(404).json({error:'Job not found'}); });
 app.get('/api/jobs/:id/video',async(req,res)=>{ const f=path.join(RENDERS,req.params.id,'video.mp4'); try { await fs.access(f); res.sendFile(f); } catch { res.status(404).send('Video not ready'); } });
 app.get('/health',(req,res)=>res.json({ok:true,service:'my-video-agent'}));
-app.use((req,res)=>res.sendFile(path.join(ROOT,'public','index.html')));
+app.use((req,res)=>res.sendFile(path.join(ROOT,'index.html')));
 app.listen(PORT,()=>console.log(`My Video Agent listening on ${PORT}`));
